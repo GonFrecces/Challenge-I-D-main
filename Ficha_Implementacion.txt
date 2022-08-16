@@ -1,0 +1,11 @@
+# Challenge-I-D-main
+Asistencia vistual
+
+Django = version 3.0.14
+Django rest full framework version = 3.13.1
+Python version = 3.8.10
+
+LISTADO GET POSTMAN= http://127.0.0.1:8000/api/
+CREDENCIALES PARA DASHBOARD:
+USER: admin
+PASSWORD: admin
