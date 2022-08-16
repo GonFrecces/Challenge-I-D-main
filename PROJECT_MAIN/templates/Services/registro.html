@@ -1,0 +1,154 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registro empleado</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{%static '/css/bootstrap.min.css'%}" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="{%static '/css/form-validation.css'%}" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      
+      <h2>Fomulario registro de empleados</h2>
+      <p class="lead">fomrulario simple para el ingreso de un nuevo empleado.</p>
+    </div>
+    <div class="py-5 text-center">
+      <a class="btn btn-outline-primary" href="{%url 'SERVICES:Inicio'%}">Home</a>
+    </div>
+
+    <div class="row g-5">
+      
+      <div class="col-md-12 col-lg-12">
+        <h4 class="mb-3">Datos personales</h4>
+        <form class="needs-validation" method="POST" action="{%url 'SERVICES:Agregar_Empleado'%}" novalidate>
+            {% csrf_token %}
+          <div class="row g-3">
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingNombres" placeholder=" Claudio Andres" name="nombres" required>
+                    <label for="floatingNombres" class="form-label">Nombres</label>
+                </div>
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingApellidos" placeholder="Vargas Zapata" name="apellidos" required>
+                    <label for="floatingApellidos">Apellidos</label>
+                </div>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingRut" placeholder="Formatos: x.xxx.xxx-x / xx.xxx.xxx-x" name="rut" required>
+                    <label for="floatingRut">Rut formato: xx.xxx.xxx-x</label>
+                </div>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingEmail" name="email" required>
+                    <label for="floatingEmail">Email</label>
+                </div>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+            <hr class="my-4">
+            <div class="col-12">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingRut" placeholder="" name="compania" required>
+                    <label for="floatingRut">Compañia</label>
+                </div>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+            <hr class="my-4">
+            <div class="form-floating">
+              <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="id_empleado">
+                {% for i in empleados%}
+                <option value="{{i.id_enrollers}}">{{i.rut_enrollers}}</option>
+                {% endfor %}
+              </select>
+              <label for="floatingSelect">Selección</label>
+            </div>
+            <hr class="my-4">
+            <button class="w-100 btn btn-primary btn-lg" type="submit">Guardar</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2022 SCM LATAM</p>
+  </footer>
+</div>
+<script src="{%static '/js/bootstrap.bundle.min.js'%}"></script>
+
+      <script src="{%static '/js/form-validation.js'%}"></script>
+      <script src="{%static '/js/bootstrap.bundle.min.js'%}"></script>
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://kit.fontawesome.com/a780e058d1.js" crossorigin="anonymous"></script>
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <script src="{%static '/js/bootstrap.min.js'%}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      {% if messages %}
+      {% for msg in messages %}
+        {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+          <script type="text/javascript">
+            Swal.fire({
+                "title":"Bien hecho",
+                "text":"{{msg}}",
+                "icon":"success"
+                })
+          </script>
+        {%endif %}
+        {% if msg.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+          <script type="text/javascript">
+            Swal.fire({
+                "title":"Atención",
+                "text":"{{msg}}",
+                "icon":"warning"
+              })
+          </script>
+        {% endif %}
+      {% endfor %}
+    {% endif%}
+  </body>
+</html>

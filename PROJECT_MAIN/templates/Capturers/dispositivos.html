@@ -1,0 +1,48 @@
+{% extends 'Dashboard/dashboard.html'%}
+{% load static %}
+{% block content %}
+{% block css %}
+<link href="{% static '/css/heroes.css'%}" rel="stylesheet">
+{% endblock %}
+
+
+<body>
+  <h2>Listado de dispositivos</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th>Nombre</th>
+          <th>Compania</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in data %}
+        <tr>
+          <td>{{p.id_dispositivo}}</td>
+          <td>{{p.sistema_operativo}}</td>
+          <td>{{p.hostname}}</td>
+          <td>
+            <a class="btn btn-sm btn-outline-success">Editar</a>
+            <a class="btn btn-sm btn-outline-danger">Eliminar</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+
+<script src="{%static '/js/bootstrap.bundle.min.js'%}"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/a780e058d1.js" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{%static '/js/bootstrap.min.js'%}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+{% endblock %}
